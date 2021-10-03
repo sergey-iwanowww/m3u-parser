@@ -1,11 +1,14 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'ru.isg'
 version '1.0'
+sourceCompatibility = '11'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -31,4 +34,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        myLibrary(MavenPublication) {
+            from components.java
+        }
+    }
 }
